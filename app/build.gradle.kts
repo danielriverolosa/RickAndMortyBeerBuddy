@@ -17,6 +17,8 @@ android {
 
         testInstrumentationRunner = AppConfig.androidTestInstrumentation
         vectorDrawables.useSupportLibrary = true
+
+        buildConfigField("String", "BASE_URL", "\"https://rickandmortyapi.com/\"")
     }
 
     buildFeatures {
@@ -70,6 +72,10 @@ dependencies {
 
     implementation(Dependency.hilt)
     kapt(Dependency.hiltCompiler)
+
+    implementation(Dependency.retrofit)
+    implementation(Dependency.okHttp)
+    implementation(Dependency.moshiConverter)
 
     testImplementation(Dependency.junit)
     testImplementation(Dependency.coroutinesTest)
