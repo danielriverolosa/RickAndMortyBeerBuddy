@@ -1,4 +1,4 @@
-package com.danielriverolosa.data.utils
+package com.danielriverolosa.domain.utils
 
 import io.mockk.MockKAnnotations
 import io.mockk.clearAllMocks
