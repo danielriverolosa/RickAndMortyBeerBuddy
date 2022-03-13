@@ -36,6 +36,7 @@ object Dependency {
     // Local data storage
     const val roomRuntime = "androidx.room:room-runtime:${Version.room}"
     const val roomKtx = "androidx.room:room-ktx:${Version.room}"
+    const val roomCompiler = "androidx.room:room-compiler:${Version.room}"
 
     // Testing
     const val junit = "junit:junit:${Version.junit}"

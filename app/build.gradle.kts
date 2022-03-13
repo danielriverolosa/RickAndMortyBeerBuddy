@@ -19,6 +19,7 @@ android {
         vectorDrawables.useSupportLibrary = true
 
         buildConfigField("String", "BASE_URL", "\"https://rickandmortyapi.com/\"")
+        buildConfigField("String", "DATABASE_NAME", "\"rick_and_morty_beer_buddy.db\"")
     }
 
     buildFeatures {
@@ -82,5 +83,4 @@ dependencies {
     testImplementation(Dependency.turbine)
     testImplementation(Dependency.mockk)
     testImplementation(Dependency.koTest)
-    testImplementation(Dependency.roomTest)
 }

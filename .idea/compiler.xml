@@ -4,6 +4,7 @@
     <bytecodeTargetLevel target="1.8">
       <module name="RickAndMortyBeerBuddy.app" target="11" />
       <module name="RickAndMortyBeerBuddy.buildSrc" target="11" />
+      <module name="RickAndMortyBeerBuddy.data" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
