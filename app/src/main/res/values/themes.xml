@@ -13,4 +13,36 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="ShapeAppearance.CircularBorder" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">30%</item>
+        <item name="strokeColor">@color/black</item>
+    </style>
+
+    <style name="FontText" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/wubba_lubba_dub_dub</item>
+    </style>
+
+    <style name="HeaderText" parent="FontText">
+        <item name="android:textSize">@dimen/font_header</item>
+    </style>
+
+    <style name="TitleText" parent="FontText">
+        <item name="android:textSize">@dimen/font_large</item>
+    </style>
+
+    <style name="TitleText.Bold" parent="FontText">
+        <item name="android:textSize">@dimen/font_large</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="RegularText" parent="FontText">
+        <item name="android:textSize">@dimen/font_normal</item>
+    </style>
+
+    <style name="SmallText" parent="FontText">
+        <item name="android:textSize">@dimen/font_small</item>
+    </style>
+
 </resources>
