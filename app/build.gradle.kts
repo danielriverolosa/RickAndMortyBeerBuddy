@@ -17,6 +17,9 @@ android {
 
         testInstrumentationRunner = AppConfig.androidTestInstrumentation
         vectorDrawables.useSupportLibrary = true
+
+        buildConfigField("String", "BASE_URL", "\"https://rickandmortyapi.com/\"")
+        buildConfigField("String", "DATABASE_NAME", "\"rick_and_morty_beer_buddy.db\"")
     }
 
     buildFeatures {
@@ -71,10 +74,13 @@ dependencies {
     implementation(Dependency.hilt)
     kapt(Dependency.hiltCompiler)
 
+    implementation(Dependency.retrofit)
+    implementation(Dependency.okHttp)
+    implementation(Dependency.moshiConverter)
+
     testImplementation(Dependency.junit)
     testImplementation(Dependency.coroutinesTest)
     testImplementation(Dependency.turbine)
     testImplementation(Dependency.mockk)
     testImplementation(Dependency.koTest)
-    testImplementation(Dependency.roomTest)
 }

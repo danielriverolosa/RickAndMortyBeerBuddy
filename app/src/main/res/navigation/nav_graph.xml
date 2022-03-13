@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/characterListView"
+    android:id="@+id/nav_graph">
+
+    <fragment
+        android:id="@+id/characterListView"
+        android:name="com.danielriverolosa.rickandmortybeerbuddy.ui.character.list.CharacterListView"
+        android:label="characterList"
+        tools:layout="@layout/character_list_view">
+    </fragment>
+
+</navigation>
