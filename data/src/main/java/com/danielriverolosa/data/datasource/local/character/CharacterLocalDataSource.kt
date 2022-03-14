@@ -17,4 +17,6 @@ class CharacterLocalDataSource @Inject constructor(
     }
 
     suspend fun getLastPage() = characterDao.getLastPage()
+
+    suspend fun getCharacter(id: Int) = characterDao.getCharacterById(id)?.toDomain()
 }

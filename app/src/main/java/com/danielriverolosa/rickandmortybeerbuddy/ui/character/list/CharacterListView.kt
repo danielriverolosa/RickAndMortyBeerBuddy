@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.danielriverolosa.domain.entity.Character
 import com.danielriverolosa.rickandmortybeerbuddy.databinding.CharacterListViewBinding
 import com.danielriverolosa.rickandmortybeerbuddy.ui.base.BaseFragment
 import com.danielriverolosa.rickandmortybeerbuddy.ui.character.list.CharacterListEvent.Initialize
 import com.danielriverolosa.rickandmortybeerbuddy.ui.character.list.CharacterListEvent.LoadNextPage
 import com.danielriverolosa.rickandmortybeerbuddy.ui.character.list.CharacterListViewState.*
+import com.danielriverolosa.rickandmortybeerbuddy.ui.character.toUiModel
 import com.danielriverolosa.rickandmortybeerbuddy.ui.utils.endless
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,7 +21,7 @@ class CharacterListView : BaseFragment<CharacterListViewBinding, CharacterListVi
 
     override val viewModel: CharacterListViewModel by viewModels()
 
-    private val listAdapter by lazy { CharacterListAdapter() }
+    private val listAdapter by lazy { CharacterListAdapter(::showBuddyBeerFinder) }
 
     override fun viewBinding(
         inflater: LayoutInflater,
@@ -48,5 +50,10 @@ class CharacterListView : BaseFragment<CharacterListViewBinding, CharacterListVi
 
     private fun loadCharacterList(characters: List<Character>) {
         listAdapter.submitList(characters)
+    }
+
+    private fun showBuddyBeerFinder(character: Character) {
+        val action = CharacterListViewDirections.findBuddyBeer(character.toUiModel())
+        findNavController().navigate(action)
     }
 }

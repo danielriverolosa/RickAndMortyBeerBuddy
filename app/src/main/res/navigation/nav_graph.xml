@@ -10,6 +10,25 @@
         android:name="com.danielriverolosa.rickandmortybeerbuddy.ui.character.list.CharacterListView"
         android:label="characterList"
         tools:layout="@layout/character_list_view">
+        <action
+            android:id="@+id/findBuddyBeer"
+            app:destination="@id/matchBuddyView">
+            <argument
+                android:name="character"
+                app:argType="com.danielriverolosa.rickandmortybeerbuddy.ui.character.CharacterUiModel"
+                app:nullable="false" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/matchBuddyView"
+        android:name="com.danielriverolosa.rickandmortybeerbuddy.ui.character.match.MatchBuddyView"
+        android:label="matchBuddyView"
+        tools:layout="@layout/match_buddy_view">
+        <argument
+            android:name="character"
+            app:argType="com.danielriverolosa.rickandmortybeerbuddy.ui.character.CharacterUiModel"
+            app:nullable="false" />
     </fragment>
 
 </navigation>

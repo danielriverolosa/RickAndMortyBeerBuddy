@@ -2,10 +2,12 @@ package com.danielriverolosa.data.repository.mapper
 
 import com.danielriverolosa.data.datasource.api.character.model.CharacterResponse
 import com.danielriverolosa.data.datasource.api.character.model.LocationResponse
+import com.danielriverolosa.data.datasource.api.episode.model.EpisodeResponse
 import com.danielriverolosa.data.datasource.local.character.model.CharacterDbEntity
 import com.danielriverolosa.data.datasource.local.character.model.SimpleLocationDbEntity
 import com.danielriverolosa.data.repository.dto.CharacterDto
 import com.danielriverolosa.domain.entity.Character
+import com.danielriverolosa.domain.entity.Episode
 import com.danielriverolosa.domain.entity.Location
 import java.util.*
 
@@ -23,9 +25,10 @@ fun CharacterResponse.toDto(page: Int) = CharacterDto(
     page
 )
 
-private fun LocationResponse.toDomain() = Location(
+fun LocationResponse.toDomain() = Location(
     url.getIdFromUrl(),
-    name
+    name,
+    residents?.map { it.getIdFromUrl() }.orEmpty()
 )
 
 fun String.getIdFromUrl(): Int = substring(lastIndexOf("/") + 1).toIntOrNull() ?: 0
@@ -63,4 +66,23 @@ fun CharacterDto.toDbEntity() = CharacterDbEntity(
 fun Location.toDbEntity() = SimpleLocationDbEntity(
     id,
     name
+)
+
+fun List<CharacterDto>.toDomain() = map { it.toDomain() }
+
+fun CharacterDto.toDomain() = Character(
+    id,
+    name,
+    status,
+    species,
+    type,
+    location,
+    image,
+    episodes
+)
+
+fun List<EpisodeResponse>.toEpisodeDomain() = map { it.toDomain() }
+
+fun EpisodeResponse.toDomain() = Episode(
+    id, name, date
 )

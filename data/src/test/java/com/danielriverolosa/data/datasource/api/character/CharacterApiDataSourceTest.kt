@@ -37,7 +37,7 @@ class CharacterApiDataSourceTest : TestUtils() {
     @Test
     fun `getCharacters when response is success should map to dto correctly`() = runTest {
         coEvery<RickAndMortyApi> { clientGenerator.generate(any()) } returns api
-        coEvery { api.getCharacterList(any()) } returns Response.success(buildCharacterListResponse())
+        coEvery { api.getCharacterList(any<Int>()) } returns Response.success(buildCharacterListResponse())
 
         val characterList = dataSource.getCharacters(0)
 
@@ -56,7 +56,7 @@ class CharacterApiDataSourceTest : TestUtils() {
     @Test
     fun `getCharacters when response is null should return empty list`() = runTest {
         coEvery<RickAndMortyApi> { clientGenerator.generate(any()) } returns api
-        coEvery { api.getCharacterList(any()) } returns Response.success(buildCharacterListResponse(false))
+        coEvery { api.getCharacterList(any<Int>()) } returns Response.success(buildCharacterListResponse(false))
 
         val characterList = dataSource.getCharacters(0)
 
@@ -66,7 +66,7 @@ class CharacterApiDataSourceTest : TestUtils() {
     @Test
     fun `getCharacters when response is not success should throw exception`() = runTest {
         coEvery<RickAndMortyApi> { clientGenerator.generate(any()) } returns api
-        coEvery { api.getCharacterList(any()) } returns Response.error(400, "error".toResponseBody())
+        coEvery { api.getCharacterList(any<Int>()) } returns Response.error(400, "error".toResponseBody())
 
         shouldThrow<BadRequestError> {
             dataSource.getCharacters(0)
