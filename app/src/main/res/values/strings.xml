@@ -5,4 +5,6 @@
     <string name="match_buddy_episodes_together">Episodes together</string>
     <string name="match_buddy_first_time_together">First time together</string>
     <string name="match_buddy_last_time_together">Last time together</string>
+    <string name="character_list_title">Select your favorite character to find his or her best buddy beer!</string>
+    <string name="character_list_search_view_hint">Find character here</string>
 </resources>
