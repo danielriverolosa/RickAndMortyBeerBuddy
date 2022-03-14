@@ -1,6 +1,6 @@
 package com.danielriverolosa.domain.interactor.buddy
 
-import com.danielriverolosa.domain.entity.BuddyBeer
+import com.danielriverolosa.domain.entity.BeerBuddy
 import com.danielriverolosa.domain.entity.Character
 import com.danielriverolosa.domain.error.DomainException
 import com.danielriverolosa.domain.interactor.UseCase
@@ -9,17 +9,17 @@ import com.danielriverolosa.domain.repository.EpisodeRepository
 import com.danielriverolosa.domain.repository.LocationRepository
 import javax.inject.Inject
 
-class GetBuddyBeerUseCase @Inject constructor(
+class GetBeerBuddyUseCase @Inject constructor(
     private val characterRepository: CharacterRepository,
     private val locationRepository: LocationRepository,
     private val episodeRepository: EpisodeRepository
-) : UseCase<BuddyBeer, Int>() {
+) : UseCase<BeerBuddy, Int>() {
 
     companion object {
         private const val BUDDY_NOT_FOUND = "Buddy Beer Not Found"
     }
 
-    override suspend fun run(params: Int): BuddyBeer {
+    override suspend fun run(params: Int): BeerBuddy {
         val character = characterRepository.getCharacter(params)
         val characterIds = locationRepository.getCharacterIdsFromLocation(character.location.id)
             .filterNot { it == character.id }
@@ -37,7 +37,7 @@ class GetBuddyBeerUseCase @Inject constructor(
     private suspend fun getBestBuddyBeer(
         selectedCharacter: Character,
         buddiesFromLocation: List<Character>
-    ): BuddyBeer? {
+    ): BeerBuddy? {
         val matchedEpisodesList = buddiesFromLocation.mapNotNull { buddy ->
             buddy.mapToEpisodesResult(selectedCharacter)
         }.sortedDescending()
@@ -51,7 +51,7 @@ class GetBuddyBeerUseCase @Inject constructor(
     private suspend fun buildBestBuddy(
         matchedEpisodesList: List<MatchedEpisodes>,
         selectedCharacter: Character
-    ): BuddyBeer {
+    ): BeerBuddy {
         val bestBuddy = matchedEpisodesList.first()
 
         val episodes = episodeRepository.getEpisodesFromList(
@@ -61,7 +61,7 @@ class GetBuddyBeerUseCase @Inject constructor(
             )
         ).sortedBy { it.id }
 
-        return BuddyBeer(
+        return BeerBuddy(
             bestBuddy.count,
             bestBuddy.character,
             selectedCharacter,

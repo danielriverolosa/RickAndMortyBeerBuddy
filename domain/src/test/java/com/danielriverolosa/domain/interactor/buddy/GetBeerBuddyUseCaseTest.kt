@@ -16,10 +16,10 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
-class GetBuddyBeerUseCaseTest : TestUtils() {
+class GetBeerBuddyUseCaseTest : TestUtils() {
 
     @InjectMockKs
-    private lateinit var useCase: GetBuddyBeerUseCase
+    private lateinit var useCase: GetBeerBuddyUseCase
 
     @MockK
     private lateinit var characterRepository: CharacterRepository
@@ -39,8 +39,8 @@ class GetBuddyBeerUseCaseTest : TestUtils() {
 
         val result = useCase(0)
 
-        result shouldBe instanceOf<Result.Success<BuddyBeer>>()
-        val buddy = (result as Result.Success<BuddyBeer>).value
+        result shouldBe instanceOf<Result.Success<BeerBuddy>>()
+        val buddy = (result as Result.Success<BeerBuddy>).value
 
         buddy.count shouldBe 1
     }

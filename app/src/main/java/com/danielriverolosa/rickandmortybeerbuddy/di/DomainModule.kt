@@ -1,6 +1,6 @@
 package com.danielriverolosa.rickandmortybeerbuddy.di
 
-import com.danielriverolosa.domain.interactor.buddy.GetBuddyBeerUseCase
+import com.danielriverolosa.domain.interactor.buddy.GetBeerBuddyUseCase
 import com.danielriverolosa.domain.interactor.character.GetCharacterListUseCase
 import com.danielriverolosa.domain.repository.CharacterRepository
 import com.danielriverolosa.domain.repository.EpisodeRepository
@@ -27,6 +27,6 @@ object DomainModule {
         characterRepository: CharacterRepository,
         locationRepository: LocationRepository,
         episodeRepository: EpisodeRepository
-    ): GetBuddyBeerUseCase = GetBuddyBeerUseCase(characterRepository, locationRepository, episodeRepository)
+    ): GetBeerBuddyUseCase = GetBeerBuddyUseCase(characterRepository, locationRepository, episodeRepository)
 
 }

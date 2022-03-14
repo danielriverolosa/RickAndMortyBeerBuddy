@@ -8,7 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
-import com.danielriverolosa.domain.entity.BuddyBeer
+import com.danielriverolosa.domain.entity.BeerBuddy
 import com.danielriverolosa.rickandmortybeerbuddy.databinding.MatchBuddyViewBinding
 import com.danielriverolosa.rickandmortybeerbuddy.ui.base.BaseFragment
 import com.danielriverolosa.rickandmortybeerbuddy.ui.character.CharacterUiModel
@@ -48,7 +48,7 @@ class MatchBuddyView :
         }
     }
 
-    private fun loadBuddyData(matched: BuddyBeer) {
+    private fun loadBuddyData(matched: BeerBuddy) {
         binding.apply {
             matched.apply {
                 buddyMatchedImage.load(buddy.image)

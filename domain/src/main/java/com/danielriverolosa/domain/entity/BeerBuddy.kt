@@ -1,6 +1,6 @@
 package com.danielriverolosa.domain.entity
 
-class BuddyBeer(
+class BeerBuddy(
     val count: Int,
     val buddy: Character,
     val character: Character,
