@@ -48,6 +48,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:maxLines="1"
+                    android:imeOptions="actionDone"
                     android:textColor="@color/green_200" />
 
             </com.google.android.material.textfield.TextInputLayout>

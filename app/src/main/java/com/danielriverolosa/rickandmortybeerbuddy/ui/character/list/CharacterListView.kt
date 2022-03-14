@@ -5,7 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.widget.doAfterTextChanged
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.danielriverolosa.domain.entity.Character
@@ -44,17 +47,39 @@ class CharacterListView : BaseFragment<CharacterListViewBinding, CharacterListVi
 
     private fun configureView() {
         binding.apply {
+            configureSearchView()
             characterListView.apply {
-                searchView.typeface = ResourcesCompat.getFont(context, R.font.wubba_lubba_dub_dub)
-                searchViewEditText.typeface = ResourcesCompat.getFont(context, R.font.wubba_lubba_dub_dub)
                 adapter = listAdapter
-                endless { viewModel.onEvent(LoadNextPage) }
+                endless {
+                    if (searchViewEditText.text?.isEmpty() == true) {
+                        viewModel.onEvent(LoadNextPage)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun CharacterListViewBinding.configureSearchView() {
+        searchView.typeface = ResourcesCompat.getFont(requireContext(), R.font.wubba_lubba_dub_dub)
+        searchViewEditText.typeface =
+            ResourcesCompat.getFont(requireContext(), R.font.wubba_lubba_dub_dub)
+
+        searchView.setEndIconOnClickListener {
+            searchViewEditText.text = null
+        }
+
+        searchViewEditText.doAfterTextChanged {
+            val name = it.toString()
+            if (name.isEmpty()) {
+                listAdapter.resetList()
+            } else {
+                listAdapter.filterByName(name)
             }
         }
     }
 
     private fun loadCharacterList(characters: List<Character>) {
-        listAdapter.submitList(characters)
+        listAdapter.loadData(characters)
     }
 
     private fun showBuddyBeerFinder(character: Character) {

@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.danielriverolosa.domain.entity.Character
-import com.danielriverolosa.rickandmortybeerbuddy.R
 import com.danielriverolosa.rickandmortybeerbuddy.databinding.CharacterListItemBinding
 import coil.load
 
@@ -24,6 +23,8 @@ class CharacterListAdapter(
         }
     }
 
+    private var characterList: MutableList<Character> = mutableListOf()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(
             CharacterListItemBinding.inflate(
@@ -35,6 +36,20 @@ class CharacterListAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
+    }
+
+    fun filterByName(name: String) {
+        val list = characterList.filter { it.name.lowercase().contains(name.lowercase()) }
+        submitList(list)
+    }
+
+    fun loadData(list: List<Character>) {
+        characterList = list.toMutableList()
+        submitList(characterList)
+    }
+
+    fun resetList() {
+        submitList(characterList)
     }
 
     inner class ViewHolder(
