@@ -23,7 +23,8 @@ import com.danielriverolosa.rickandmortybeerbuddy.ui.utils.endless
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CharacterListView : BaseFragment<CharacterListViewBinding, CharacterListViewModel, CharacterListViewState>() {
+class CharacterListView :
+    BaseFragment<CharacterListViewBinding, CharacterListViewModel, CharacterListViewState>() {
 
     override val viewModel: CharacterListViewModel by viewModels()
 
@@ -39,7 +40,12 @@ class CharacterListView : BaseFragment<CharacterListViewBinding, CharacterListVi
         viewModel.onEvent(Initialize)
     }
 
-    override fun render(viewState: CharacterListViewState) = when(viewState) {
+    override fun onResume() {
+        super.onResume()
+        binding.searchViewEditText.text?.clear()
+    }
+
+    override fun render(viewState: CharacterListViewState) = when (viewState) {
         is InitializeView -> configureView()
         is ShowDataLoaded -> loadCharacterList(viewState.characters)
         is ShowError -> showError(binding.root, viewState.message)
