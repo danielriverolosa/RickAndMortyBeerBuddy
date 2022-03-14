@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RickAndMortyBeerBuddy</string>
+    <string name="app_name">RickAndMorty Beer Buddy</string>
     <string name="match_buddy_loading_text">Searching best buddy</string>
     <string name="match_buddy_location">Location</string>
     <string name="match_buddy_episodes_together">Episodes together</string>
