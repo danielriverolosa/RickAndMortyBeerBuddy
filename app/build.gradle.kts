@@ -3,6 +3,8 @@ plugins {
     id(GradlePlugin.kotlinAndroid)
     id(GradlePlugin.kotlinKapt)
     id(GradlePlugin.hilt)
+    id(GradlePlugin.kotlinParcelize)
+    id(GradlePlugin.safeArgs)
 }
 
 android {

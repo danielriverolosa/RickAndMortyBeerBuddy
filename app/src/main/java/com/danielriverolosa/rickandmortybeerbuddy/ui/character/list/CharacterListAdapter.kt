@@ -10,24 +10,36 @@ import com.danielriverolosa.rickandmortybeerbuddy.R
 import com.danielriverolosa.rickandmortybeerbuddy.databinding.CharacterListItemBinding
 import coil.load
 
-class CharacterListAdapter : ListAdapter<Character, CharacterListAdapter.ViewHolder>(diffCallback) {
+class CharacterListAdapter(
+    private val onClickItem: (Character) -> Unit
+) : ListAdapter<Character, CharacterListAdapter.ViewHolder>(diffCallback) {
 
     companion object {
         private val diffCallback = object : DiffUtil.ItemCallback<Character>() {
-            override fun areItemsTheSame(oldItem: Character, newItem: Character): Boolean = oldItem.id == newItem.id
+            override fun areItemsTheSame(oldItem: Character, newItem: Character): Boolean =
+                oldItem.id == newItem.id
 
-            override fun areContentsTheSame(oldItem: Character, newItem: Character): Boolean = oldItem == newItem
+            override fun areContentsTheSame(oldItem: Character, newItem: Character): Boolean =
+                oldItem == newItem
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ViewHolder(CharacterListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        ViewHolder(
+            CharacterListItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
-    inner class ViewHolder(private val binding: CharacterListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(
+        private val binding: CharacterListItemBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Character) {
             binding.apply {
@@ -38,6 +50,7 @@ class CharacterListAdapter : ListAdapter<Character, CharacterListAdapter.ViewHol
                     transitionName = item.image
                     load(item.image)
                 }
+                itemView.setOnClickListener { onClickItem(item) }
             }
         }
     }
