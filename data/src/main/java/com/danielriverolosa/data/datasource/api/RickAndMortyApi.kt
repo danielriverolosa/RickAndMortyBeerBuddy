@@ -10,4 +10,13 @@ interface RickAndMortyApi {
     suspend fun getCharacterList(
         @Query("page") page: Int
     ): Response<CharacterListResponse>
+    @GET("api/location/{id}")
+    suspend fun getLocation(
+        @Path("id") locationId: Int
+    ): Response<LocationResponse>
+
+    @GET("api/episode/{ids}")
+    suspend fun getEpisodeList(
+        @Path("ids") ids: List<Int>
+    ): Response<List<EpisodeResponse>>
 }

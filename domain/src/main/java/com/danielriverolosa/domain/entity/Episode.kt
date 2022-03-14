@@ -1,7 +1,7 @@
 package com.danielriverolosa.domain.entity
 
-data class Location(
+class Episode(
     val id: Int,
     val name: String,
-    val residents: List<Int> = emptyList()
+    val date: String
 )
