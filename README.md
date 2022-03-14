@@ -8,6 +8,8 @@ Therefore, we have been asked to develop an app that the actors of the series ca
 
 To obtain all the necessary data we will make use of the public API: [The Rick and Morty API](https://rickandmortyapi.com/).
 
+![screenshots](./screenshots/combine_screenshot.png)
+
 ## App requirements
 
 First of all, the application must show a list with all the characters of the series, showing the following information for each one of them:
@@ -51,7 +53,6 @@ The project is modularized by layers following [Clean Architecture](https://blog
 - **Data** module:
 
     - Repositories: The repository is responsible to expose the data to the domain, resolving conflicts between multiple data sources and abstracting the data sources from the rest of the architecture.
-
     - Datasources: Each data source class should have the responsibility of working with only one source of data, which can be a file, a network source, or a local database.
 
 - **App** module:
