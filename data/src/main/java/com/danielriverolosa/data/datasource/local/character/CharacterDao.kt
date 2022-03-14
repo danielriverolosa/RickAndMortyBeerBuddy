@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.danielriverolosa.data.datasource.local.character.model.CharacterDbEntity
+import com.danielriverolosa.domain.entity.Character
 
 @Dao
 interface CharacterDao {
@@ -17,5 +18,8 @@ interface CharacterDao {
 
     @Query("SELECT IFNULL(MAX(page),0) FROM character")
     suspend fun getLastPage(): Int
+
+    @Query("SELECT * FROM character WHERE id = :id")
+    suspend fun getCharacterById(id: Int): CharacterDbEntity?
 
 }

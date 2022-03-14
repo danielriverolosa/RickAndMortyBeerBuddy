@@ -2,6 +2,7 @@ package com.danielriverolosa.data.repository
 
 import com.danielriverolosa.data.datasource.api.character.CharacterApiDataSource
 import com.danielriverolosa.data.datasource.local.character.CharacterLocalDataSource
+import com.danielriverolosa.data.repository.mapper.toDomain
 import com.danielriverolosa.domain.entity.Character
 import com.danielriverolosa.domain.repository.CharacterRepository
 import javax.inject.Inject
@@ -24,5 +25,12 @@ class CharacterRepositoryImpl @Inject constructor(
             localDataSource.saveCharacters(this)
         }
         return localDataSource.getCharacterList()
+    }
+
+    override suspend fun getCharacterList(idList: List<Int>) =
+        apiDataSource.getCharacters(idList).toDomain()
+
+    override suspend fun getCharacter(id: Int): Character {
+        return localDataSource.getCharacter(id) ?: apiDataSource.getCharacter(id).toDomain()
     }
 }
