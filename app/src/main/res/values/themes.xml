@@ -4,7 +4,7 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/green_500</item>
         <item name="colorPrimaryVariant">@color/green_700</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnPrimary">@color/gray</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
@@ -21,13 +21,30 @@
     </style>
 
     <style name="CardViewTopRadius" parent="@style/Widget.MaterialComponents.CardView">
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearance_custom_corners</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance_custom_top_corners</item>
     </style>
 
-    <style name="ShapeAppearance_custom_corners" parent="">
+    <style name="ShapeAppearance_custom_top_corners" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopLeft">24dp</item>
         <item name="cornerSizeTopRight">24dp</item>
+    </style>
+
+    <style name="CardViewBottomRadius" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance_custom_bottom_corners</item>
+    </style>
+
+    <style name="ShapeAppearance_custom_bottom_corners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeBottomLeft">24dp</item>
+        <item name="cornerSizeBottomRight">24dp</item>
+    </style>
+
+    <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/green_200</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="hintTextColor">@color/green_200</item>
+        <item name="startIconTint">@color/green_200</item>
     </style>
 
     <style name="FontText" parent="Widget.AppCompat.TextView">
