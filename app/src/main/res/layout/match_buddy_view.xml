@@ -13,7 +13,7 @@
         android:layout_margin="@dimen/spacing_normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_arrow_back" />
+        app:srcCompat="@drawable/ic_arrow_back_circle" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardContentLayout"
@@ -111,7 +111,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_normal"
                 android:text="@string/match_buddy_location"
-                android:textColor="@color/green_500"
+                android:textColor="@color/green_200"
                 app:layout_constraintEnd_toEndOf="@id/endGuideline"
                 app:layout_constraintStart_toStartOf="@id/startGuideline"
                 app:layout_constraintTop_toBottomOf="@id/characterName" />
@@ -135,7 +135,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_small"
                 android:text="@string/match_buddy_episodes_together"
-                android:textColor="@color/green_500"
+                android:textColor="@color/green_200"
                 app:layout_constraintEnd_toEndOf="@id/endGuideline"
                 app:layout_constraintStart_toStartOf="@id/startGuideline"
                 app:layout_constraintTop_toBottomOf="@id/locationText" />
@@ -159,7 +159,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_small"
                 android:text="@string/match_buddy_first_time_together"
-                android:textColor="@color/green_500"
+                android:textColor="@color/green_200"
                 app:layout_constraintEnd_toEndOf="@id/endGuideline"
                 app:layout_constraintStart_toStartOf="@id/startGuideline"
                 app:layout_constraintTop_toBottomOf="@id/episodesText" />
@@ -183,7 +183,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_small"
                 android:text="@string/match_buddy_last_time_together"
-                android:textColor="@color/green_500"
+                android:textColor="@color/green_200"
                 app:layout_constraintEnd_toEndOf="@id/endGuideline"
                 app:layout_constraintStart_toStartOf="@id/startGuideline"
                 app:layout_constraintTop_toBottomOf="@id/firstTimeText" />
