@@ -59,7 +59,8 @@ The project is modularized by layers following [Clean Architecture](https://blog
 
     - DI: Contains the dependency injection resolution.
     - UI: In the presentation layer, the unidirectional state flow pattern has been applied.
-      ![unidirectional_state_flow](./screenshots/unidirectional_state_flow.png)
+      
+![unidirectional_state_flow](./screenshots/unidirectional_state_flow.png)
 
 ## Testing
 
